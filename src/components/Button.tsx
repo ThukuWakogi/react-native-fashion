@@ -1,8 +1,8 @@
 import React from 'react'
-import { Text, StyleSheet, ViewStyle, StyleProp } from 'react-native'
+import { StyleSheet, ViewStyle, StyleProp } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { useTheme } from '@shopify/restyle'
-import { Theme } from './Theme'
+import { Theme,Text } from './Theme'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,15 +12,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  label: {
-    fontFamily: "SFProText-Regular",
-    fontSize: 15,
-    textAlign: 'center'
-  }
+  label: {}
 })
 
 interface ButtonProps {
-  variant: 'default' | 'primary'
+  variant: 'default' | 'primary' | 'transparent'
   label: string
   onPress: () => void
   containerStyle?: StyleProp<ViewStyle>
@@ -28,14 +24,16 @@ interface ButtonProps {
 
 const Button = ({ variant, label, onPress, containerStyle }:ButtonProps) => {
   const theme = useTheme<Theme>()
-  const backgroundColor = variant === 'primary' ? theme.colors.primary : theme.colors.text
+  const backgroundColor = variant === 'primary'
+    ? theme.colors.primary :
+      variant === 'transparent' ? 'transparent' : theme.colors.grey 
   const color = variant === 'primary' ? theme.colors.white : theme.colors.title
   return (
     <RectButton
       style={[styles.container, { backgroundColor }, containerStyle]}
       {...{ onPress }}
     >
-      <Text style={[styles.label, { color }]}>{label}</Text>
+      <Text variant='button' style={[{ color }]}>{label}</Text>
     </RectButton>
   )
 }

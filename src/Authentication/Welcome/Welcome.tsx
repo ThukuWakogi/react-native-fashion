@@ -1,15 +1,69 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Image, Dimensions, StyleSheet } from 'react-native'
+import { theme, Box, Text, Button } from '../../components'
 
-interface WelcomeProps {
-  
+const { width } = Dimensions.get('window')
+
+const picture = {
+  src: require('../assets/5.png'),
+  width: 3383,
+  height: 5074
 }
+export const assets = [picture.src]
 
 const Welcome = () => {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <Box flex={1} backgroundColor="white">
+      <Box
+        flex={1}
+        borderBottomRightRadius="xl"
+        backgroundColor="grey"
+        alignItems="center"
+        justifyContent="flex-end"
+      >
+        <Image
+        source={picture.src}
+          style={{
+            width: width - theme.borderRadii.xl,
+            height: (width - theme.borderRadii.xl) * picture.height / picture.width
+          }}
+        />
+      </Box>
+      <Box flex={1} borderTopLeftRadius="xl">
+        <Box
+          backgroundColor="grey"
+          style={{
+            ...StyleSheet.absoluteFillObject
+          }}
+        >
+          <Box
+            backgroundColor='white'
+            borderTopLeftRadius='xl'
+            flex={1}
+            justifyContent="space-evenly"
+            alignItems="center"
+            padding="xl"
+          >
+            <Text variant="title2" >Let's get started</Text>
+            <Text variant="body" textAlign="center">Login to your account below or signup for an amazing experience.</Text>
+            <Button
+              variant="primary"
+              label="Have an account? Login"
+              onPress={() => {}}
+            />
+            <Button
+              label="Join us, it's free"
+              onPress={() => {}}
+            />
+            <Button
+              variant="transparent"
+              label="Forgot password"
+              onPress={() => {}}
+            />
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   )
 }
 
