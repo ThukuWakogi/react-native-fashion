@@ -1,14 +1,16 @@
-import { createBox, createText, createTheme } from '@shopify/restyle'
+import { createBox, createText, createTheme } from "@shopify/restyle";
 
 const theme = createTheme({
   colors: {
-    primary: '#2CB9B0',
-    secondary: '#0C0D34',
-    text: 'rgba(12, 13, 52, 0.7)',
-    white: 'white',
-    grey: 'rgba(12, 13, 52, 0.05)',
-    button: '',
-    lightGrey: '#F4F0EF',
+    primary: "#2CB9B0",
+    secondary: "#0C0D34",
+    danger: "#FF0058",
+    text: "rgba(12, 13, 52, 0.7)",
+    white: "white",
+    grey: "rgba(12, 13, 52, 0.05)",
+    // button: '',
+    lightGrey: "#F4F0EF",
+    darkGrey: "#8A8D90",
   },
   spacing: {
     s: 8,
@@ -27,33 +29,33 @@ const theme = createTheme({
     hero: {
       fontSize: 80,
       lineHeight: 80,
-      fontFamily: 'SFProText-Bold',
+      fontFamily: "SFProText-Bold",
       color: "white",
-      textAlign: 'center',
+      textAlign: "center",
     },
     title1: {
       fontSize: 28,
-      fontFamily: 'SFProText-Semibold',
+      fontFamily: "SFProText-Semibold",
       color: "secondary",
     },
     title2: {
       fontSize: 24,
       lineHeight: 30,
-      fontFamily: 'SFProText-Semibold',
+      fontFamily: "SFProText-Semibold",
       color: "secondary",
     },
     body: {
-      fontSize: 24,
+      fontSize: 16,
       lineHeight: 24,
-      fontFamily: 'SFProText-Regular',
+      fontFamily: "SFProText-Regular",
       color: "text",
     },
     button: {
       fontSize: 15,
       fontFamily: "SFProText-Medium",
-      color: 'text',
-    }
-  }
+      color: "text",
+    },
+  },
 });
 
 export type Theme = typeof theme;
