@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
+import { useTheme } from "@shopify/restyle";
 import { Image, Dimensions, StyleSheet, StatusBar } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import theme, { Box } from "./Theme";
+import { Box, Theme } from "./Theme";
 
 const { width } = Dimensions.get("window");
 
@@ -16,7 +16,7 @@ const aspectRatio = 750 / 1125;
 const height = width * aspectRatio;
 
 const Container = ({ children, footer }: ContainerProps) => {
-  const insets = useSafeAreaInsets();
+  const theme = useTheme<Theme>();
 
   return (
     <Box flex={1} backgroundColor="secondary">
