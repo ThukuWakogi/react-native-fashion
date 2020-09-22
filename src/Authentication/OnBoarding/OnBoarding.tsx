@@ -173,7 +173,7 @@ const OnBoarding = ({ navigation }: StackNavigationProps<Routes, 'Onboarding'>) 
                 <Subslide
                   key={index}
                   onPress={() => {
-                    if (last) return navigation.navigate('welcome')
+                    if (last) return navigation.navigate('Welcome')
 
                     if (scroll.current)
                       scroll.current?.getNode().scrollTo({ x: width * (index + 1), animated: true})
