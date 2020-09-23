@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { useTheme } from "@shopify/restyle";
 import { Image, Dimensions, StyleSheet, StatusBar } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { Box, Theme } from "./Theme";
 
 const { width } = Dimensions.get("window");
@@ -57,7 +58,7 @@ const Container = ({ children, footer }: ContainerProps) => {
           backgroundColor="white"
           flex={1}
         >
-          {children}
+          <KeyboardAwareScrollView>{children}</KeyboardAwareScrollView>
         </Box>
       </Box>
       <Box backgroundColor="secondary" paddingTop="m">
