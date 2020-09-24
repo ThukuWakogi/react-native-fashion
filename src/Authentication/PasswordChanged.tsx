@@ -7,18 +7,12 @@ import {
   RoundedIconButton,
   RoundedIcon,
 } from "../components";
-import {
-  AuthenticationRoutes,
-  StackNavigationProps,
-} from "../components/Navigation";
-
-interface PasswordChangedProps {}
+import { AuthNavigationProps } from "../components/Navigation";
 
 const SIZE = 80;
 const PasswordChanged = ({
   navigation,
-}: PasswordChangedProps &
-  StackNavigationProps<AuthenticationRoutes, "PasswordChanged">) => {
+}: AuthNavigationProps<"PasswordChanged">) => {
   return (
     <Container
       pattern={0}
@@ -31,7 +25,6 @@ const PasswordChanged = ({
             size={60}
             onPress={() => navigation.pop()}
           />
-          {/* <CloseButton onPress={() => navigation.pop()} /> */}
         </Box>
       }
     >
@@ -42,17 +35,6 @@ const PasswordChanged = ({
           backgroundColor={"primaryLight"}
           color="primary"
         />
-        {/* <Box
-          backgroundColor="primaryLight"
-          style={{ height: SIZE, width: SIZE, borderRadius: SIZE / 2 }}
-          justifyContent="center"
-          alignItems="center"
-          marginBottom="m"
-        >
-          <Text color="primary" textAlign="center">
-            <Icon name="check" size={32} />
-          </Text>
-        </Box> */}
         <Text variant="title1" textAlign="center" marginVertical="l">
           Your password was successfully changed
         </Text>

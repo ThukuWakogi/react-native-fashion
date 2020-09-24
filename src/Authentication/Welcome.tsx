@@ -3,10 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { Image, Dimensions, StyleSheet } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { useTheme, Box, Text, Button } from "../components";
-import {
-  StackNavigationProps,
-  AuthenticationRoutes,
-} from "../components/Navigation";
+import { AuthNavigationProps } from "../components/Navigation";
 
 const { width } = Dimensions.get("window");
 
@@ -17,9 +14,7 @@ const picture = {
 };
 export const assets = [picture.src];
 
-const Welcome = ({
-  navigation,
-}: StackNavigationProps<AuthenticationRoutes, "Welcome">) => {
+const Welcome = ({ navigation }: AuthNavigationProps<"Welcome">) => {
   const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">

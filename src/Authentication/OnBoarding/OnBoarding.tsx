@@ -11,10 +11,7 @@ import { interpolateColor, useScrollHandler } from "react-native-redash";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 import { useTheme, Theme, makeStyles } from "../../components";
-import {
-  StackNavigationProps,
-  AuthenticationRoutes,
-} from "../../components/Navigation";
+import { AuthNavigationProps } from "../../components/Navigation";
 import { StatusBar } from "expo-status-bar";
 
 const { useRef } = React;
@@ -105,9 +102,7 @@ const slides = [
 
 export const assets = slides.map((slide) => slide.picture.uri);
 
-const OnBoarding = ({
-  navigation,
-}: StackNavigationProps<AuthenticationRoutes, "Onboarding">) => {
+const OnBoarding = ({ navigation }: AuthNavigationProps<"Login">) => {
   const styles = useStyles();
   const theme = useTheme();
   const scroll = useRef<Animated.ScrollView>(null);
