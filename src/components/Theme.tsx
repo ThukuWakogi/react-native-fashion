@@ -16,6 +16,8 @@ export const theme = createTheme({
     grey: "rgba(12, 13, 52, 0.05)",
     lightGrey: "#F4F0EF",
     darkGrey: "#8A8D90",
+    black: "#000",
+    primaryLight: "#E7f9f7",
   },
   spacing: {
     s: 8,

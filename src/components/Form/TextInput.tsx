@@ -13,8 +13,8 @@ interface TextInputProps extends RNTextInputProps {
   error?: string;
 }
 
-const TextInput = forwardRef(
-  ({ icon, touched, error, ...props }: TextInputProps, ref) => {
+const TextInput = forwardRef<RNTextInput, TextInputProps>(
+  ({ icon, touched, error, ...props }, ref) => {
     const theme = useTheme();
     const color = !touched ? "text" : error ? "danger" : "primary";
     const SIZE = theme.borderRadii.m * 2.4;
@@ -37,7 +37,7 @@ const TextInput = forwardRef(
           placeholderTextColor={theme.colors[color]}
           {...props}
           style={{ flex: 1 }}
-          ref={ref}
+          {...{ ref }}
         />
         {touched && (
           <Box

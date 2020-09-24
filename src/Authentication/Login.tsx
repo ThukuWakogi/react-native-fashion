@@ -17,7 +17,7 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
-  const password = useRef<typeof TextInput>(null);
+  const password = useRef<RNTextInput>(null);
   const footer = (
     <Footer
       title="Don't have an account?"
@@ -65,9 +65,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             autoCapitalize="none"
             returnKeyType="next"
             returnKeyLabel="next"
-            onSubmitEditing={() =>
-              ((password.current as unknown) as RNTextInput)?.focus()
-            }
+            onSubmitEditing={() => password.current?.focus()}
           />
         </Box>
         <Box marginBottom="m">
@@ -92,7 +90,10 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             checked={values.remember}
             onChange={() => setFieldValue("remember", !values.remember)}
           />
-          <Button variant="transparent" onPress={() => true}>
+          <Button
+            variant="transparent"
+            onPress={() => navigation.navigate("ForgotPassword")}
+          >
             <Text color="primary">Forgot password</Text>
           </Button>
         </Box>

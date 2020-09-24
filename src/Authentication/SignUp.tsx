@@ -19,8 +19,8 @@ const SignUpSchema = Yup.object().shape({
 });
 
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
-  const password = useRef<typeof TextInput>(null);
-  const passwordConfirmation = useRef<typeof TextInput>(null);
+  const password = useRef<RNTextInput>(null);
+  const passwordConfirmation = useRef<RNTextInput>(null);
   const footer = (
     <Footer
       title="Already have an account?"
@@ -67,9 +67,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
             autoCapitalize="none"
             returnKeyType="next"
             returnKeyLabel="next"
-            onSubmitEditing={() =>
-              ((password.current as unknown) as RNTextInput)?.focus()
-            }
+            onSubmitEditing={() => password.current?.focus()}
           />
         </Box>
         <Box marginBottom="m">
@@ -83,11 +81,9 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
             error={errors.password}
             touched={touched.password}
             secureTextEntry
-            returnKeyType="go"
-            returnKeyLabel="go"
-            onSubmitEditing={() =>
-              ((passwordConfirmation.current as unknown) as RNTextInput)?.focus()
-            }
+            returnKeyType="next"
+            returnKeyLabel="next"
+            onSubmitEditing={() => passwordConfirmation.current?.focus()}
           />
         </Box>
         <Box marginBottom="m">
