@@ -4,7 +4,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, Container, Text, Button } from "../components";
 import Footer from "../components/Footer";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import {
+  AuthenticationRoutes,
+  StackNavigationProps,
+} from "../components/Navigation";
 import TextInput from "../components/Form/TextInput";
 
 interface ForgotPasswordProps {}
@@ -15,7 +18,8 @@ const ForgotPasswordSchema = Yup.object().shape({
 
 const ForgotPassword = ({
   navigation,
-}: ForgotPasswordProps & StackNavigationProps<Routes, "ForgotPassword">) => {
+}: ForgotPasswordProps &
+  StackNavigationProps<AuthenticationRoutes, "ForgotPassword">) => {
   const footer = (
     <Footer
       title="Don't work?"
@@ -39,7 +43,7 @@ const ForgotPassword = ({
   });
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={2} {...{ footer }}>
       <Box padding="l" justifyContent="center" flex={1}>
         <Text variant="title1" textAlign="center" marginBottom="l">
           Forgot Password

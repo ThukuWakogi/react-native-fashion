@@ -1,7 +1,12 @@
 import React from "react";
+import { StatusBar } from "expo-status-bar";
 import { Image, Dimensions, StyleSheet } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 import { useTheme, Box, Text, Button } from "../components";
-import { StackNavigationProps, Routes } from "../components/Navigation";
+import {
+  StackNavigationProps,
+  AuthenticationRoutes,
+} from "../components/Navigation";
 
 const { width } = Dimensions.get("window");
 
@@ -12,10 +17,18 @@ const picture = {
 };
 export const assets = [picture.src];
 
-const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
+const Welcome = ({
+  navigation,
+}: StackNavigationProps<AuthenticationRoutes, "Welcome">) => {
   const theme = useTheme();
   return (
     <Box flex={1} backgroundColor="white">
+      <StatusBar
+        // barStyle="light-content"
+        style="dark"
+        translucent
+        backgroundColor="transparent"
+      />
       <Box
         flex={1}
         borderBottomRightRadius="xl"
@@ -56,12 +69,15 @@ const Welcome = ({ navigation }: StackNavigationProps<Routes, "Welcome">) => {
               label="Have an account? Login"
               onPress={() => navigation.navigate("Login")}
             />
-            <Button label="Join us, it's free" onPress={() => {}} />
             <Button
-              variant="transparent"
-              label="Forgot password"
-              onPress={() => {}}
+              label="Join us, it's free"
+              onPress={() => navigation.navigate("SignUp")}
             />
+            <RectButton onPress={() => navigation.navigate("ForgotPassword")}>
+              <Text padding="s" variant="button" color="text">
+                Forgot password
+              </Text>
+            </RectButton>
           </Box>
         </Box>
       </Box>

@@ -11,7 +11,11 @@ import { interpolateColor, useScrollHandler } from "react-native-redash";
 import Subslide from "./Subslide";
 import Dot from "./Dot";
 import { useTheme, Theme, makeStyles } from "../../components";
-import { StackNavigationProps, Routes } from "../../components/Navigation";
+import {
+  StackNavigationProps,
+  AuthenticationRoutes,
+} from "../../components/Navigation";
+import { StatusBar } from "expo-status-bar";
 
 const { useRef } = React;
 const { width } = Dimensions.get("window");
@@ -103,7 +107,7 @@ export const assets = slides.map((slide) => slide.picture.uri);
 
 const OnBoarding = ({
   navigation,
-}: StackNavigationProps<Routes, "Onboarding">) => {
+}: StackNavigationProps<AuthenticationRoutes, "Onboarding">) => {
   const styles = useStyles();
   const theme = useTheme();
   const scroll = useRef<Animated.ScrollView>(null);
@@ -115,6 +119,12 @@ const OnBoarding = ({
 
   return (
     <View style={styles.container}>
+      <StatusBar
+        // barStyle="light-content"
+        style="dark"
+        translucent
+        backgroundColor="transparent"
+      />
       <Animated.View style={[styles.slider, { backgroundColor }]}>
         {slides.map(({ picture }, index) => {
           const opacity = interpolate(x, {

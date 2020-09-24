@@ -6,7 +6,18 @@ import { Box, Button, Container, Text } from "../components";
 import TextInput from "../components/Form/TextInput";
 import Checkbox from "../components/Form/Checkbox";
 import Footer from "../components/Footer";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import { AuthenticationRoutes, HomeRoutes } from "../components/Navigation";
+import { BorderlessButton } from "react-native-gesture-handler";
+import { CompositeNavigationProp } from "@react-navigation/native";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
+import { StackNavigationProp } from "@react-navigation/stack";
+
+interface LoginProps {
+  navigation: CompositeNavigationProp<
+    StackNavigationProp<AuthenticationRoutes, "Login">,
+    DrawerNavigationProp<HomeRoutes, "OutfitIdeas">
+  >;
+}
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -16,7 +27,7 @@ const LoginSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
+const Login = ({ navigation }: LoginProps) => {
   const password = useRef<RNTextInput>(null);
   const footer = (
     <Footer
@@ -39,12 +50,15 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
       password: "",
       remember: false,
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      console.log(values);
+      navigation.navigate("Home");
+    },
     validationSchema: LoginSchema,
   });
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={0} {...{ footer }}>
       <Box padding="l">
         <Text variant="title1" textAlign="center" marginBottom="l">
           Welcome back
@@ -84,18 +98,22 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             onSubmitEditing={() => handleSubmit()}
           />
         </Box>
-        <Box flexDirection="row" justifyContent="space-between">
+        <Box
+          flexDirection="row"
+          justifyContent="space-between"
+          marginVertical="m"
+          alignItems="center"
+        >
           <Checkbox
             label="Remember Me"
             checked={values.remember}
             onChange={() => setFieldValue("remember", !values.remember)}
           />
-          <Button
-            variant="transparent"
+          <BorderlessButton
             onPress={() => navigation.navigate("ForgotPassword")}
           >
             <Text color="primary">Forgot password</Text>
-          </Button>
+          </BorderlessButton>
         </Box>
         <Box alignItems="center">
           <Button

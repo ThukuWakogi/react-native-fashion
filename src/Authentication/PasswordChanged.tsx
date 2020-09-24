@@ -1,24 +1,48 @@
 import React from "react";
-import { Feather as Icon } from "@expo/vector-icons";
-import { Box, Container, Text, Button, CloseButton } from "../components";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import {
+  Box,
+  Container,
+  Text,
+  Button,
+  RoundedIconButton,
+  RoundedIcon,
+} from "../components";
+import {
+  AuthenticationRoutes,
+  StackNavigationProps,
+} from "../components/Navigation";
 
 interface PasswordChangedProps {}
 
 const SIZE = 80;
 const PasswordChanged = ({
   navigation,
-}: PasswordChangedProps & StackNavigationProps<Routes, "PasswordChanged">) => {
+}: PasswordChangedProps &
+  StackNavigationProps<AuthenticationRoutes, "PasswordChanged">) => {
   return (
     <Container
+      pattern={0}
       footer={
-        <Box flexDirection="row" justifyContent="center">
-          <CloseButton onPress={() => navigation.pop()} />
+        <Box flexDirection="row" justifyContent="center" paddingVertical="s">
+          <RoundedIconButton
+            backgroundColor="white"
+            color="secondary"
+            name="x"
+            size={60}
+            onPress={() => navigation.pop()}
+          />
+          {/* <CloseButton onPress={() => navigation.pop()} /> */}
         </Box>
       }
     >
       <Box justifyContent="center" flex={1} alignItems="center">
-        <Box
+        <RoundedIcon
+          name="check"
+          size={SIZE}
+          backgroundColor={"primaryLight"}
+          color="primary"
+        />
+        {/* <Box
           backgroundColor="primaryLight"
           style={{ height: SIZE, width: SIZE, borderRadius: SIZE / 2 }}
           justifyContent="center"
@@ -28,18 +52,18 @@ const PasswordChanged = ({
           <Text color="primary" textAlign="center">
             <Icon name="check" size={32} />
           </Text>
-        </Box>
-        <Text variant="title1" textAlign="center" marginBottom="l">
-          Password changed
+        </Box> */}
+        <Text variant="title1" textAlign="center" marginVertical="l">
+          Your password was successfully changed
         </Text>
         <Text variant="body" textAlign="center" marginBottom="l">
-          Enter email address associated with account
+          Close this window and login again
         </Text>
         <Box alignItems="center" marginTop="m">
           <Button
             variant="primary"
             onPress={() => navigation.navigate("Login")}
-            label="Reset Password"
+            label="Login again"
           />
         </Box>
       </Box>

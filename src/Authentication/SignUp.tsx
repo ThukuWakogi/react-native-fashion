@@ -5,7 +5,10 @@ import { TextInput as RNTextInput } from "react-native";
 import { Box, Button, Container, Text } from "../components";
 import TextInput from "../components/Form/TextInput";
 import Footer from "../components/Footer";
-import { Routes, StackNavigationProps } from "../components/Navigation";
+import {
+  AuthenticationRoutes,
+  StackNavigationProps,
+} from "../components/Navigation";
 
 const SignUpSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -18,7 +21,9 @@ const SignUpSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
+const SignUp = ({
+  navigation,
+}: StackNavigationProps<AuthenticationRoutes, "SignUp">) => {
   const password = useRef<RNTextInput>(null);
   const passwordConfirmation = useRef<RNTextInput>(null);
   const footer = (
@@ -46,7 +51,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
   });
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={1} {...{ footer }}>
       <Box padding="l">
         <Text variant="title1" textAlign="center" marginBottom="l">
           Create Account
