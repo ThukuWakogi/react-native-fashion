@@ -14,7 +14,6 @@ export const theme = createTheme({
     text: "rgba(12, 13, 52, 0.7)",
     white: "white",
     grey: "rgba(12, 13, 52, 0.05)",
-    lightGrey: "#F4F0EF",
     darkGrey: "#8A8D90",
     black: "#000",
     primaryLight: "#E7f9f7",
@@ -22,6 +21,8 @@ export const theme = createTheme({
     yellow: "#FFC641",
     pink: "#FF87A2",
     violet: "#442CB9",
+    lightGrey: "#FAFAFA",
+    lightBlue: "#BFEAF5",
   },
   spacing: {
     s: 8,
@@ -65,6 +66,12 @@ export const theme = createTheme({
       fontSize: 15,
       fontFamily: "SFProText-Medium",
       color: "text",
+    },
+    header: {
+      fontSize: 12,
+      fontFamily: "SFProText-Semibold",
+      lineHeight: 24,
+      color: "secondary",
     },
   },
 });

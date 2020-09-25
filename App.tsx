@@ -8,10 +8,10 @@ import { LoadAssets } from "./src/components";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { theme } from "./src/components/Theme";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeNavigator } from "./src/Home";
+import { HomeNavigator, assets as homeAssets } from "./src/Home";
 import { AppRoutes } from "./src/components/Navigation";
 
-const assets = [...authenticationAssets];
+const assets = [...authenticationAssets, ...homeAssets];
 const fonts = {
   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
   "SFProText-Semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),

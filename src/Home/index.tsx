@@ -13,3 +13,5 @@ export const HomeNavigator = () => (
     <Drawer.Screen name="OutfitIdeas" component={OutfitIdeas} />
   </Drawer.Navigator>
 );
+
+export { assets } from "./Drawer";
