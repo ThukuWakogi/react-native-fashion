@@ -8,12 +8,12 @@ const categories = [
   {
     id: "newin",
     title: "New In",
-    color: "#FFE8E9",
+    color: "#FFDDDD",
   },
   {
     id: "summer",
     title: "Summer",
-    color: "#F1E0FF",
+    color: "#BEECC4",
   },
   {
     id: "activewear",

@@ -10,6 +10,7 @@ import { Dimensions, StyleSheet, Image } from "react-native";
 // import { useTheme } from "@shopify/restyle";
 import { Box, Header, Text } from "../../components";
 import DrawerItem, { DrawerItemProps } from "./DrawerItem";
+// import { useSafeAreaInsets } from "react-native-safe-area-context/lib/typescript/src/SafeAreaContext";
 
 const { width } = Dimensions.get("window");
 export const DRAWER_WIDTH = width * 0.8;
@@ -33,19 +34,19 @@ const items: DrawerItemProps[] = [
   {
     icon: "user",
     label: "Edit Profile",
-    screen: "EditProfile",
+    screen: "FavoriteOutfits",
     color: "yellow",
   },
   {
     icon: "clock",
     label: "Transaction History",
-    screen: "TransactionHistory",
+    screen: "FavoriteOutfits",
     color: "pink",
   },
   {
     icon: "settings",
     label: "Notification Settings",
-    screen: "NotificationSettings",
+    screen: "FavoriteOutfits",
     color: "violet",
   },
   {
@@ -63,7 +64,7 @@ const items: DrawerItemProps[] = [
 ];
 
 const Drawer = () => {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   // const insets = useSafeAreaInsets();
   return (
     <Box flex={1}>
@@ -78,8 +79,7 @@ const Drawer = () => {
             title="menu"
             right={{
               icon: "shopping-bag",
-              // onPress: () => navigation.dispatch(DrawerActions.closeDrawer()),
-              onPress: () => true,
+              onPress: () => navigation.dispatch(DrawerActions.closeDrawer()),
             }}
             dark
           />
@@ -117,7 +117,7 @@ const Drawer = () => {
             </Text>
           </Box>
           {items.map((item) => (
-            <DrawerItem key={item.label} {...item} />
+            <DrawerItem key={item.icon} {...item} />
           ))}
         </Box>
       </Box>
