@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Header, Text } from "../../components";
 import { HomeNavigationProps } from "../../components/Navigation";
-import Graph, { DataPoint } from "./Graph";
+import Graph, { DataPoint } from "./Graph/Graph";
 
 const data: DataPoint[] = [
   {
